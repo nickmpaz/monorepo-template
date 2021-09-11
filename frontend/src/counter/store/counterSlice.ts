@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AsyncThunkStatus } from "../../app/definitions/types";
 import { RootState } from "../../app/store/store";
 import {
+  getRemoteCountRequest,
   incrementRemoteCountRequest,
   resetRemoteCountRequest,
 } from "../api/counterApi";
@@ -22,6 +23,13 @@ const initialState: CounterState = {
   },
 };
 
+export const getRemoteCountAction = createAsyncThunk(
+  "counter/getRemoteCountAction",
+  async () => {
+    const response = await getRemoteCountRequest();
+    return response.data;
+  }
+);
 export const incrementRemoteCountAction = createAsyncThunk(
   "counter/incrementRemoteCountAction",
   async () => {
@@ -51,6 +59,16 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getRemoteCountAction.pending, (state) => {
+        state.remoteCount.status = AsyncThunkStatus.Loading;
+      })
+      .addCase(getRemoteCountAction.rejected, (state) => {
+        state.remoteCount.status = AsyncThunkStatus.Failed;
+      })
+      .addCase(getRemoteCountAction.fulfilled, (state, action) => {
+        state.remoteCount.status = AsyncThunkStatus.Idle;
+        state.remoteCount.value = action.payload;
+      })
       .addCase(incrementRemoteCountAction.pending, (state) => {
         state.remoteCount.status = AsyncThunkStatus.Loading;
       })
