@@ -27,6 +27,7 @@ import { CounterModule } from './counter/counter.module';
       inject: [ConfigService],
     }),
     ConfigModule.forRoot({
+      envFilePath: '../.env',
       isGlobal: true,
       load: [configuration],
     }),

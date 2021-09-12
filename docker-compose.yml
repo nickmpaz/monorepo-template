@@ -1,8 +1,11 @@
 version: '3.9'
 services:
   web:
-    build: .
-    command: 'scripts/wait-for-it.sh db:${DATABASE_PORT} -- yarn start:prod'
+    build: 
+      context: .
+      args: 
+        DATABASE_HOST: ${DATABASE_HOST}
+        DATABASE_PORT: ${DATABASE_PORT}
     ports:
       - ${APP_HOST_PORT}:${APP_CONTAINER_PORT}
     depends_on:
