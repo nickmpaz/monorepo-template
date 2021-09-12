@@ -3,6 +3,10 @@ name: Frontend
 on:
   push:
     branches: [main]
+    paths: 
+      - '.github/workflows/frontend.yml'
+      - 'frontend/**'
+      - 'common/**'
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -22,7 +26,6 @@ jobs:
           aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
       - name: Build React App
-        run: npm install && npm run build
         run: yarn install && yarn workspace frontend build
       - name: Deploy app build to S3 bucket
         run: aws s3 sync frontend/build/ s3://${{ env.S3_BUCKET }} --delete

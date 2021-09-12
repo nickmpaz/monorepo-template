@@ -12,9 +12,13 @@ env:
   PIPELINE_ID: ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
-  workflow_dispatch:
+    paths: 
+      - '.github/workflows/backend.yml'
+      - 'backend/**'
+      - 'common/**'
 
 
 jobs:
