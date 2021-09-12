@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  web:
+    build: .
+    command: 'scripts/wait-for-it.sh db:${DATABASE_PORT} -- yarn start:prod'
+    ports:
+      - ${APP_HOST_PORT}:${APP_CONTAINER_PORT}
+    depends_on:
+      - db
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+    volumes:
+      - ${DATABASE_HOST_VOLUME}:${DATABASE_CONTAINER_VOLUME}
