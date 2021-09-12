@@ -6,5 +6,9 @@
     "backend",
     "common",
     "frontend"
-  ]
+  ],
+  "scripts": {
+    "database:up": "docker-compose -f docker-compose.dev.yml up -d",
+    "database:down": "docker-compose -f docker-compose.dev.yml down"
+  }
 }

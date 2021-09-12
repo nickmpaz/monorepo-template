@@ -2,7 +2,7 @@
   "name": "common",
   "version": "1.0.0",
   "scripts": {
-    "dev": "tsc -w",
+    "start": "tsc -w",
     "build": "tsc"
   }
 }

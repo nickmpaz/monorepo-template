@@ -7,7 +7,6 @@ export class FirebaseGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const user = await this.authService.validateRequest(request);
-
     if (user === null) {
       return false;
     }

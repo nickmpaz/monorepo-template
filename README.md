@@ -1,14 +1,17 @@
 ## Tech Stack
-- React (Typescript)
-- NestJS (Typescript)
-- Yarn/ Yarn Workspaces
+- Typescript
+- React + Redux
+- NestJS
+- Yarn + Yarn Workspaces
 - MySQL
+- Elastic Beanstalk
+- S3 + Cloudfront
 
 ## Development
-
-## Infrastructure
-
-## Environment Variables and Secrets
-
-## CICD
-
+```
+$ yarn install
+$ yarn database:up
+$ yarn workspace common start
+$ yarn workspace backend start
+$ yarn workspace frontend start
+```
