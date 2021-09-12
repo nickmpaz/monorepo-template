@@ -32,7 +32,6 @@ jobs:
           AWS_VERSION_LABEL=${{env.EBS_APP_NAME}}-${{env.PIPELINE_ID}}
 
           echo "Creating Source Bundle"
-          cd backend
           zip -r ${{env.EBS_APP_NAME}}.zip .
           S3_KEY="$AWS_VERSION_LABEL.zip"
 
@@ -58,7 +57,6 @@ jobs:
           aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
       - run: |
-          cd backend
           AWS_VERSION_LABEL=${{env.EBS_APP_NAME}}-${{env.PIPELINE_ID}}
 
           echo "Installing Elastic Beanstalk Cli"
