@@ -1,5 +1,6 @@
 export enum AsyncThunkStatus {
   Idle,
-  Loading,
-  Failed,
+  Pending,
+  Fulfilled,
+  Rejected,
 }

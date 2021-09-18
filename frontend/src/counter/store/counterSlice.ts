@@ -60,33 +60,33 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getRemoteCountAction.pending, (state) => {
-        state.remoteCount.status = AsyncThunkStatus.Loading;
+        state.remoteCount.status = AsyncThunkStatus.Pending;
       })
       .addCase(getRemoteCountAction.rejected, (state) => {
-        state.remoteCount.status = AsyncThunkStatus.Failed;
+        state.remoteCount.status = AsyncThunkStatus.Rejected;
       })
       .addCase(getRemoteCountAction.fulfilled, (state, action) => {
-        state.remoteCount.status = AsyncThunkStatus.Idle;
+        state.remoteCount.status = AsyncThunkStatus.Fulfilled;
         state.remoteCount.value = action.payload;
       })
       .addCase(incrementRemoteCountAction.pending, (state) => {
-        state.remoteCount.status = AsyncThunkStatus.Loading;
+        state.remoteCount.status = AsyncThunkStatus.Pending;
       })
       .addCase(incrementRemoteCountAction.rejected, (state) => {
-        state.remoteCount.status = AsyncThunkStatus.Failed;
+        state.remoteCount.status = AsyncThunkStatus.Rejected;
       })
       .addCase(incrementRemoteCountAction.fulfilled, (state, action) => {
-        state.remoteCount.status = AsyncThunkStatus.Idle;
+        state.remoteCount.status = AsyncThunkStatus.Fulfilled;
         state.remoteCount.value = action.payload;
       })
       .addCase(resetRemoteCountAction.pending, (state) => {
-        state.remoteCount.status = AsyncThunkStatus.Loading;
+        state.remoteCount.status = AsyncThunkStatus.Pending;
       })
       .addCase(resetRemoteCountAction.rejected, (state) => {
-        state.remoteCount.status = AsyncThunkStatus.Failed;
+        state.remoteCount.status = AsyncThunkStatus.Rejected;
       })
       .addCase(resetRemoteCountAction.fulfilled, (state, action) => {
-        state.remoteCount.status = AsyncThunkStatus.Idle;
+        state.remoteCount.status = AsyncThunkStatus.Fulfilled;
         state.remoteCount.value = action.payload;
       });
   },
